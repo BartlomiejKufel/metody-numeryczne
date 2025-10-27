@@ -7,7 +7,7 @@ else:
     print(f"G(x) = x+{a*-1}")
 
 n = int(input("Podaj ilość współczynników wielomianu: "))
-primalW = []
+primalW = [] #wielomian przed
 polynomial = "W(x) =" #polynomial oznacza wielomian
 for i in range(n):
     primalW.append(int(input(f"Podaj współczynnik dla x^{n - i - 1}: ")))
@@ -25,7 +25,7 @@ for i in range(n):
 print(polynomial)
 
 result = "W(x) = ("
-afterW = []
+afterW = [] #wielomian po
 for i in range(n):
     if i == 0:
         afterW.append(primalW[i])
@@ -39,13 +39,17 @@ for i in range(n-1):
     elif i == 0:
         result += f"{afterW[i]}x^{n - i - 2}"
     elif i == n-2:
-        result += f" {'+' if afterW[i] >= 0 else ''}{afterW[i]})"
+        result += f" {'+' if afterW[i] >= 0 else ''}{afterW[i]}"
     else:
         result += f" {'+' if afterW[i] >= 0 else ''}{afterW[i]}x^{n - i - 2}"
 
+result +=")"
 
 
-result += f"(x{'+' if a > 0 else ''}{a})"
+if a > 0:
+    result += f"(x-{a})"
+else:
+    result += f"(x+{a*-1})"
 
 if afterW[n-1] != 0:
     result += f" {'+' if afterW[n - 1] > 0 else ''}{afterW[n - 1]}"

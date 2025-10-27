@@ -24,7 +24,7 @@ if function(section[0]) * function(section[1]) < 0:
         fxn = function(xn)
         approximations.append(fxn)
 
-        if abs(fxn) < E or abs(section[1] - section[0]) < E:
+        if abs(fxn) < E :
             print(f"x{len(approximations)} = {xn}")
             print(f"Końcowy przedział: {section}")
             print(f"Lista przybliżeń: {approximations}")
