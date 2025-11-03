@@ -9,7 +9,7 @@ def derivative1_function(x):
 
 #pochodna 2 stopnia
 def derivative2_function(x):
-    return -math.cos(x)
+    return -math.sin(x)
 
 E = 0.01
 section = [(math.pi/2),math.pi]

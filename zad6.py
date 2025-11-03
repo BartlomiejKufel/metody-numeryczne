@@ -1,5 +1,4 @@
 import math
-import sympy as sp
 
 def function(x):
     return 3*x - math.cos(x) - 1
