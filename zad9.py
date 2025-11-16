@@ -38,7 +38,7 @@ s *= h/3
 print(f"całka[{a},{b}] = {f} * dx")
 print(f"całka[{a},{b}] ≈ {float(s)}")
 
-# to jest do błędu
+# Liczenie błędu
 f1 = diff(f,x)
 f2 = diff(f1,x)
 f3 = diff(f2,x)
