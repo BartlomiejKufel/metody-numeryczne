@@ -21,7 +21,7 @@ if function(section[0]) * function(section[1]) < 0:
     #wybranie, która połowa będzie x0
     if function(section[0]) * derivative2_function(section[0]) > 0:
         x = section[0]
-    elif function(section[1]) * derivative1_function(section[1]) > 0:
+    elif function(section[1]) * derivative2_function(section[1]) > 0:
         x = section[1]
 
     print(f"x{n} = {x}")
