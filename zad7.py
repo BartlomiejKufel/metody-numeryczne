@@ -3,15 +3,12 @@
 #https://pl.wikipedia.org/wiki/Ca%C5%82kowanie_numeryczne <- tutaj jest wzór na błąd
 from sympy import Symbol, sqrt, diff
 
-
 def define_parts(n, a, b):
     result = []
-
     for i in range(0,n+1):
         result.append(a + (i/n)*(b-a))
 
     return result
-
 
 x = Symbol('x')
 
@@ -32,8 +29,7 @@ print(f"całka[{a},{b}] = {f} * dx")
 print(f"całka[{a},{b}] ≈ {float(s)}")
 
 # Liczenie błędu
-f1 = diff(f,x)
-f2 = diff(f1,x)
+f2 = diff(f,x,2)
 max_f2 = max(abs(f2.subs(x,a)), abs(f2.subs(x,b)))
 R = (b-a)**3/(12*n**2) * max_f2
 print(f"Błąd ≈ {float(R)}")

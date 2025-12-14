@@ -19,31 +19,30 @@ b = 1
 f = sin(x) * exp(-3*x) + x ** 3 # exp = E do potęgi
 
 
-n = 4 # n musi być parzyste
-h = (b - a)/ n
+n = 4 #n musi być parzyste
 
-parts = define_parts(n, a, b)
+if n % 2 == 0:
+    h = (b - a)/ n
+    parts = define_parts(n, a, b)
 
-s_even = 0 # suma parzystych indexów
-s_odd = 0 # suma nieparzystych indeksów
-for i in range(1, n):
-    if i % 2 == 0:
-        s_even += f.subs(x, parts[i])
-    else:
-        s_odd += f.subs(x, parts[i])
+    s_even = 0 # suma parzystych indexów
+    s_odd = 0 # suma nieparzystych indeksów
+    for i in range(1, n):
+        if i % 2 == 0:
+            s_even += f.subs(x, parts[i])
+        else:
+            s_odd += f.subs(x, parts[i])
 
-s = f.subs(x, a) + f.subs(x, b) + (2 * s_even) + (4 * s_odd)
-s *= h/3
+    s = f.subs(x, a) + f.subs(x, b) + (2 * s_even) + (4 * s_odd)
+    s *= h/3
 
-print(f"całka[{a},{b}] = {f} * dx")
-print(f"całka[{a},{b}] ≈ {float(s)}")
+    print(f"całka[{a},{b}] = {f} * dx")
+    print(f"całka[{a},{b}] ≈ {float(s)}")
 
-# Liczenie błędu
-f1 = diff(f,x)
-f2 = diff(f1,x)
-f3 = diff(f2,x)
-f4 = diff(f3,x)
-max_f4 = max(abs(f4.subs(x,a)), abs(f4.subs(x,b)))
-R = ((b-a)*h**4)/180 * max_f4
-print(f"Błąd ≈ {float(R)}")
-
+    # Liczenie błędu
+    f4 = diff(f,x,4)
+    max_f4 = max(abs(f4.subs(x,a)), abs(f4.subs(x,b)))
+    R = ((b-a)*h**4)/180 * max_f4
+    print(f"Błąd ≈ {float(R)}")
+else:
+    print("n musi być parzyste")
